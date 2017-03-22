@@ -11,8 +11,6 @@ public class Usuario {
 
 	public static void main(String args[]) {		
 
-		
-
 		System.out.println("1 - Cadastrar usuário: ");
 		System.out.println("2 - Alterar cadastro de usuário: ");
 		System.out.println("3 - Sair: ");
@@ -24,11 +22,17 @@ public class Usuario {
 		}
 
 		else if (opcao == 2) {
-			
+			acessoCadastro.alterarCadastro();
 		}
+		
+		else if(opcao == 3){
+			System.exit(opcao);
+		}
+		
 
 		else {
 			System.out.println("Opção inválida!!");
+						
 		}
 	}
 

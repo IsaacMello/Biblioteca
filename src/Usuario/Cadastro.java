@@ -15,5 +15,11 @@ public class Cadastro {
 
 	}
 	
+	public void alterarCadastro(){
+	
+		
+		
+	}
+	
 	
 }
