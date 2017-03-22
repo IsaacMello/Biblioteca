@@ -3,7 +3,6 @@ package Usuario;
 public class Cadastro {
 
 	
-	
 	UsuariosExistentes acessarUsuarios = new UsuariosExistentes();
 	GerarID acessarID = new GerarID();
 	public void cadastroUsuarios() {
@@ -16,10 +15,8 @@ public class Cadastro {
 	}
 	
 	public void alterarCadastro(){
-	
 		
-		
+			
 	}
-	
-	
+		
 }

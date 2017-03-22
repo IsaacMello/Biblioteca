@@ -8,6 +8,7 @@ public class Usuario {
 	static Scanner ler = new Scanner(System.in);
 	
 	static Cadastro acessoCadastro = new Cadastro();
+	 static Acesso aAluno = new Acesso();
 
 	public static void main(String args[]) {		
 
@@ -22,7 +23,10 @@ public class Usuario {
 		}
 
 		else if (opcao == 2) {
-			acessoCadastro.alterarCadastro();
+			//acessoCadastro.alterarCadastro();
+			
+			aAluno.login();
+			aAluno.senha();
 		}
 		
 		else if(opcao == 3){
