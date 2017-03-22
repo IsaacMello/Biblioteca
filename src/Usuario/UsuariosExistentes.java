@@ -5,7 +5,7 @@ public class UsuariosExistentes {
 	String nome, matricula;
 
 	public String nome() {
-		this.nome = "Isaac Fernando Mello Silva";
+		this.nome = "Fulano de Tal";
 
 		return nome;
 	}
