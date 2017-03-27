@@ -1,5 +1,4 @@
-
-package biblioteca.livro;
+package Livros;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,14 +17,14 @@ public class Livro
     private int quantidade;
     private int available;
         
-    public Livro(int pages, int issue, int code, String title, String author, String type, 
+    public void livro(int pages, int issue, int code, String title, String author, String type, 
                 int quantity, int available)      // construtor para o objeto livro
     {
         
-        this.pages = pages;                 //n√∫mero de p√°ginas passados para o construtor
-        this.issue = issue;                 // edi√ß√£o do livro
-        this.code = code;                   // c√≥digo do livro
-        this.title = title;                 // t√≠tulo do livro
+        this.pages = pages;                 //n˙mero de p·ginas passados para o construtor
+        this.issue = issue;                 // ediÁ„o do livro
+        this.code = code;                   // cÛdigo do livro
+        this.title = title;                 // tÌtulo do livro
         this.author = author;               // autor que escreveu o livro
         this.type = type;                   // tipo do livro, texto ou geral
         this.available = available;         // Disponibilidade do livro 
@@ -82,13 +81,13 @@ public class Livro
         PrintStream pw = new PrintStream(System.out);
             
         pw.println("//--------------------------------------");   
-        pw.println("||C√≥digo: " + this.getCode());
-        pw.println("||T√≠tulo: " + this.getTitle());
+        pw.println("||CÛdigo: " + this.getCode());
+        pw.println("||TÌtulo: " + this.getTitle());
         pw.println("||Autor: " + this.getAuthor());
-        pw.println("||Edi√ß√£o: " + this.getIssue());
+        pw.println("||EdiÁ„o: " + this.getIssue());
         pw.println("||Tipo: " + ((this.getType().equals("T")) ? "Texto" : "Geral"));
-        pw.println("||Quantidade de p√°ginas: " + this.getPages());
-        pw.println("||Quantidade dispon√≠vel: " + this.getAvailable());
+        pw.println("||Quantidade de p·ginas: " + this.getPages());
+        pw.println("||Quantidade disponÌvel: " + this.getAvailable());
         pw.println("||Quantidade total: " + this.getQuantity());
         pw.println("\\\\--------------------------------------");
     }
@@ -99,7 +98,7 @@ public class Livro
         {
             File fp = new File("livros.csv"); // variavel que 'representara' o arquivo book
             FileWriter fw = new FileWriter(fp, true); // empacotar o file para que possa escrever nele, e adicionar o campo true para indicar append
-            PrintWriter pw = new PrintWriter(fw); // cria um PrintWriter que ir√° escrever no arquivo
+            PrintWriter pw = new PrintWriter(fw); // cria um PrintWriter que ir· escrever no arquivo
 
             if(fp.exists() == false) // caso o arquivo nao exista, cria um arquivo
             { 
@@ -140,7 +139,7 @@ public class Livro
         this.quantidade = quantity;
     }
     
-    public boolean compareTo(Livro book) // m√©todo para comparar o livro "this" com o livro "book"
+    public boolean compareTo(Livro book) // mÈtodo para comparar o livro "this" com o livro "book"
     {
         if (this.getPages() != book.getPages())
             return (false);
