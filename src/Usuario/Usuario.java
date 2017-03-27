@@ -3,15 +3,14 @@ package Usuario;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Menu.Menu;
 import classes.Discente;
 import controllers.DiscenteController;
-import Biblioteca.Biblioteca;
-//Importar o DiscenteController.java do pacote controllers de IC-SECRETARIA-Institucional  
 
 public class Usuario {
 
 	DiscenteController acessoDiscente = new DiscenteController();
-	Biblioteca acessoBiblioteca = new Biblioteca();
+	Menu acessoMenu= new Menu();
 	Scanner ler = new Scanner(System.in);
 	ArrayList<Usuario> usuario;
 	Discente aux;
@@ -46,7 +45,7 @@ public class Usuario {
 		else {
 			System.out.println("Usuário não encontrado");
 
-			return acessoBiblioteca;
+			return acessoMenu;
 		}
 		return buscaUsuario;
 
