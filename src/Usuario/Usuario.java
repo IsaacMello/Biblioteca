@@ -1,47 +1,60 @@
 package Usuario;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import classes.Discente;
+import controllers.DiscenteController;
+import Biblioteca.Biblioteca;
+//Importar o DiscenteController.java do pacote controllers de IC-SECRETARIA-Institucional  
+
 public class Usuario {
-	static int opcao;
-	static String nomeBusca = "";
-	static Scanner ler = new Scanner(System.in);
-	
-	static Cadastro acessoCadastro = new Cadastro();
-	 static Acesso aAluno = new Acesso();
 
-	public static void main(String args[]) {		
+	DiscenteController acessoDiscente = new DiscenteController();
+	Biblioteca acessoBiblioteca = new Biblioteca();
+	Scanner ler = new Scanner(System.in);
+	ArrayList<Usuario> usuario;
+	Discente aux;
+	int opcao;
 
-		System.out.println("1 - Cadastrar usuário: ");
-		System.out.println("2 - Alterar cadastro de usuário: ");
-		System.out.println("3 - Sair: ");
+	public void listarUsuarios() {
+		ArrayList<Discente> usuario = new ArrayList<Discente>();
 
-		opcao = ler.nextInt();
+		int tamanhoDiscente = acessoDiscente.discentes.size();
 
-		if (opcao == 1) {
-			acessoCadastro.cadastroUsuarios();
+		for (int i = 0; i < tamanhoDiscente; i++) {
+			aux = acessoDiscente.discentes.get(i);
+			usuario.add(aux);
 		}
 
-		else if (opcao == 2) {
-			//acessoCadastro.alterarCadastro();
-			
-			aAluno.login();
-			aAluno.senha();
-		}
-		
-		else if(opcao == 3){
-			System.exit(opcao);
-		}
-		
+		System.out.println(usuario);
 
-		else {
-			System.out.println("Opção inválida!!");
-						
-		}
 	}
 
-	
-	
-	
+	public Object buscarUsuario() {
+		String buscaUsuario = "";
+
+		System.out.println("Insira o nome do usuario a ser busca: ");
+
+		buscaUsuario = ler.nextLine();
+
+		if (buscaUsuario.equals(usuario.contains(buscaUsuario))) {
+
+			System.out.println(usuario);
+		}
+
+		else {
+			System.out.println("Usuário não encontrado");
+
+			return acessoBiblioteca;
+		}
+		return buscaUsuario;
+
+	}
+
+	public ArrayList<Usuario> getName() {
+		// TODO Auto-generated method stub
+		return usuario;
+	}
 
 }
