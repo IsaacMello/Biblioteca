@@ -1,8 +1,7 @@
+package Emprestimo;
 
-package biblioteca.emprestimo;
-
-import biblioteca.livro.Livro;
-import biblioteca.usuario.Usuario;
+import Livros.Livro;
+import Usuario.Usuario;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintStream;
@@ -15,49 +14,49 @@ public class Emprestimo
 {
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Objeto para a data do sistema
     
-    private int code;                       // c√≥digo do empr√©st√≠mo
-    private int codeUser;                   // c√≥digo do usu√°rio
-    private int codeBook;                   // c√≥digo do livro
-    private boolean returned;               // vari√°vel para verificar a devolu√ß√£o do livro
-    private Calendar dateBorrow;            // Ir√° armazenar a data de empr√©stimo
-    private Calendar dateReturn;            // Ir√° armazenar a data de devolu√ß√£o
-    private Calendar dateMax;               // Ir√° armazenar a data m√°xima de devolu√ß√£o
+    private int code;                       // cÛdigo do emprÈstÌmo
+    private int codeUser;                   // cÛdigo do usu·rio
+    private int codeBook;                   // cÛdigo do livro
+    private boolean returned;               // vari·vel para verificar a devoluÁ„o do livro
+    private Calendar dateBorrow;            // Ir· armazenar a data de emprÈstimo
+    private Calendar dateReturn;            // Ir· armazenar a data de devoluÁ„o
+    private Calendar dateMax;               // Ir· armazenar a data m·xima de devoluÁ„o
 
     
-    public Emprestimo(int code, int codeUser, int codeBook, boolean returned, 
-            String dateBorrow, String dateReturn, String dateMax)   // Construtor para a classe de empr√©stimo
+    public void emprestimo(int code, int codeUser, int codeBook, boolean returned, 
+            String dateBorrow, String dateReturn, String dateMax)   // Construtor para a classe de emprÈstimo
     {
         String[] date;                      // String para armazenar a data
         
-        this.code = code;                   // Armazena o c√≥digo de empr√©stimo
-        this.codeUser = codeUser;           // Armazena o c√≥digo do usu√°rio
-        this.codeBook = codeBook;           // Armazena o c√≥digo do livro 
-        this.returned = returned;           // Verifica a devolu√ß√£o do livro 'true' devolvido e 'false' para pend√™ncia na devolu√ß√£o
+        this.code = code;                   // Armazena o cÛdigo de emprÈstimo
+        this.codeUser = codeUser;           // Armazena o cÛdigo do usu·rio
+        this.codeBook = codeBook;           // Armazena o cÛdigo do livro 
+        this.returned = returned;           // Verifica a devoluÁ„o do livro 'true' devolvido e 'false' para pendÍncia na devoluÁ„o
         
-        date = dateBorrow.split("/");       // Divis√£o com barras da data armazenada na vari√°vel date
+        date = dateBorrow.split("/");       // Divis„o com barras da data armazenada na vari·vel date
         
-        this.dateBorrow = new GregorianCalendar     // Ir√° pegar a data  de empr√©stimo
+        this.dateBorrow = new GregorianCalendar     // Ir· pegar a data  de emprÈstimo
         (
                 Integer.parseInt(date[2]), 
                 Integer.parseInt(date[1]) - 1, Integer.parseInt(date[0])
         );
         
-        date = dateReturn.split("/");       // Divis√£o com barras da data armazenada na vari√°vel date
+        date = dateReturn.split("/");       // Divis„o com barras da data armazenada na vari·vel date
         
-        this.dateReturn = new GregorianCalendar   // Ir√° pegar a data de devolu√ß√£o
+        this.dateReturn = new GregorianCalendar   // Ir· pegar a data de devoluÁ„o
         (
                 Integer.parseInt(date[2]), 
                 Integer.parseInt(date[1]) - 1, Integer.parseInt(date[0])
         );
         
-        date = dateMax.split("/");                 // Divis√£o com barras da data armazenada na vari√°vel date
+        date = dateMax.split("/");                 // Divis„o com barras da data armazenada na vari·vel date
         
-        this.dateMax = new GregorianCalendar(      //  Ir√° armazenar a data m√°xima de devolu√ß√£o dependendo do tipo do usu√°rio
+        this.dateMax = new GregorianCalendar(      //  Ir· armazenar a data m·xima de devoluÁ„o dependendo do tipo do usu·rio
                 Integer.parseInt(date[2]), 
                 Integer.parseInt(date[1]) - 1, Integer.parseInt(date[0])
         );
     }
-    // Getters e setters da classe de empr√©stimos //
+    // Getters e setters da classe de emprÈstimos //
     
     public Calendar getDateMax()
     {
@@ -129,43 +128,43 @@ public class Emprestimo
         this.dateReturn = dateReturn;
     }
     
-    public void printBorrowing(Usuario user, Livro book)   //M√©todo que ir√° imprimir na sa√≠da todas as especifica√ß√µes do usu√°rio
+    public void printBorrowing(Usuario user, Livro book)   //MÈtodo que ir· imprimir na saÌda todas as especificaÁıes do usu·rio
     {
         PrintStream pw = new PrintStream(System.out);
         
         pw.println("//--------------------------------------");   
-        pw.println("||C√≥digo: " + this.getCode());
+        pw.println("||CÛdigo: " + this.getCode());
         
         if (user != null)
-            pw.println("||Nome do usu√°rio: " + user.getName());
+            pw.println("||Nome do usu·rio: " + user.getName());
         
         if (book != null)
             pw.println("||Nome do Livro: " + book.getTitle());
         
-        pw.println("||Foi devolvido: " + (this.isReturned() ? "Sim" : "N√£o"));
-        pw.println("||Data de empr√©stimo: " + dateFormat.format(dateBorrow.getTime()));
+        pw.println("||Foi devolvido: " + (this.isReturned() ? "Sim" : "N„o"));
+        pw.println("||Data de emprÈstimo: " + dateFormat.format(dateBorrow.getTime()));
         
         if (this.isReturned())
-            pw.println("||Data de devolu√ß√£o: " + dateFormat.format(dateReturn.getTime()));
+            pw.println("||Data de devoluÁ„o: " + dateFormat.format(dateReturn.getTime()));
         
-        pw.println("||Data m√°xima de devolu√ß√£o: " + dateFormat.format(dateMax.getTime()));
+        pw.println("||Data m·xima de devoluÁ„o: " + dateFormat.format(dateMax.getTime()));
         pw.println("\\\\--------------------------------------");
     }
     
-    public void addFileBorrowing()  //m√©todo que ir√° armazenar no arquivo a situa√ß√£o de empr√©stimo do usu√°rio
+    public void addFileBorrowing()  //mÈtodo que ir· armazenar no arquivo a situaÁ„o de emprÈstimo do usu·rio
     {
         try 
         {
             File fp = new File("emprestimos.csv");
             FileWriter fw = new FileWriter(fp, true);
-            PrintWriter pw = new PrintWriter(fw); // cria um PrintWriter que ir√° escrever no arquivo
+            PrintWriter pw = new PrintWriter(fw); // cria um PrintWriter que ir· escrever no arquivo
 
             if(fp.exists() == false)
             { // caso o arquivo nao exista, cria um arquivo
                 fp.createNewFile();
             }
             
-            // Comandos que salvam os dados no arquivo, observe que ap√≥s a adi√ß√£o de uma parte do livro √© adicionada uma v√≠rgula para separa-los
+            // Comandos que salvam os dados no arquivo, observe que apÛs a adiÁ„o de uma parte do livro È adicionada uma vÌrgula para separa-los
 
             pw.print(this.getCode());
             pw.print(",");
